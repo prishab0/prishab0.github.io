@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prisha Bhanushali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --white: #f7f5f0;
+    --accent: #1a472a;
+    --accent-light: #d4edda;
+    --muted: #6b6b6b;
+    --border: #e0ddd6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(247, 245, 240, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 3rem;
+    padding-top: 6rem;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-text { padding-right: 2rem; }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* PHONE MOCKUP */
+  .phone-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .phone {
+    width: 260px;
+    height: 520px;
+    background: var(--black);
+    border-radius: 36px;
+    border: 2px solid #2a2a2a;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.18), 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 22px;
+    background: var(--black);
+    border-radius: 12px;
+    z-index: 10;
+  }
+
+  .phone-screen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0f1f14 0%, #1a3a22 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px 24px;
+  }
+
+  .phone-header {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .phone-store {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .phone-tag {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+
+  .phone-card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 14px;
+    margin-bottom: 10px;
+  }
+
+  .phone-card-label {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .phone-card-name {
+    font-size: 0.88rem;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .phone-card-reward {
+    font-size: 0.72rem;
+    color: #4ade80;
+    margin-top: 2px;
+  }
+
+  .phone-card.best {
+    background: rgba(74, 222, 128, 0.12);
+    border-color: rgba(74, 222, 128, 0.3);
+  }
+
+  .phone-badge {
+    display: inline-block;
+    background: #4ade80;
+    color: #0a2010;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .phone-savings {
+    margin-top: auto;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .phone-savings-label {
+    font-size: 0.58rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .phone-savings-num {
+    font-size: 1.5rem;
+    color: #4ade80;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* floating pill */
+  .phone-notif {
+    position: absolute;
+    top: -20px;
+    right: -50px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    width: 180px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .phone-notif-top {
+    font-size: 0.62rem;
+    color: var(--muted);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .phone-notif-msg {
+    font-size: 0.78rem;
+    color: var(--black);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .phone-notif-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* TRACTION */
+  .traction {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .traction-item {
+    padding: 2rem 2.5rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .traction-item:last-child { border-right: none; }
+
+  .traction-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+  }
+
+  .traction-label {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* VIDEO */
+  .video-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
+    max-width: 500px;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--black);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .video-play {
+    width: 64px;
+    height: 64px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .video-placeholder p {
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* VIDEO EMBED — shown when you swap placeholder */
+  .video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    background: var(--black);
+    color: var(--white);
+    padding: 7rem 3rem;
+  }
+
+  .how-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .how-step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    color: var(--accent-light);
+    opacity: 0.25;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .how-step-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+
+  .how-step-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  /* ABOUT */
+  .about-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    border-top: 1px solid var(--border);
+  }
+
+  .about-body {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  .about-body p + p { margin-top: 1.25rem; }
+
+  .about-creds {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+
+  .cred-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+
+  .cred-item:last-child { border-bottom: none; }
+
+  .cred-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .cred-main { font-weight: 500; color: var(--black); }
+  .cred-sub { color: var(--muted); font-size: 0.82rem; margin-top: 1px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; }
+    .phone-wrap { order: -1; }
+    .phone-notif { display: none; }
+    .traction { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .traction-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .traction-item:last-child { border-bottom: none; }
+    .video-section, .about-section { padding: 4rem 1.5rem; }
+    .how-section { padding: 4rem 1.5rem; }
+    .how-grid, .about-section { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 2rem 1.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Prisha Bhanushali</span>
+  <ul class="nav-links">
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://github.com/prishab0/TapSmart" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow fade-up">TapSmart — Fintech iOS App</p>
+    <h1 class="hero-title fade-up delay-1">Pay with the <em>right card,</em> every time.</h1>
+    <p class="hero-desc fade-up delay-2">TapSmart uses geofencing to detect where you're shopping and recommends the credit card that earns you the most cashback — delivered as a lock screen notification before you tap to pay.</p>
+    <a href="#demo" class="hero-cta fade-up delay-3">Watch the demo &darr;</a>
+  </div>
+
+  <div class="phone-wrap fade-up delay-2">
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-header">📍 Near Whole Foods Market</div>
+        <div class="phone-store">Whole Foods Market</div>
+        <div class="phone-tag">Grocery · Detected via geofence</div>
+
+        <div class="phone-card best">
+          <div class="phone-badge">Best card</div>
+          <div class="phone-card-label">Recommended</div>
+          <div class="phone-card-name">Amex Blue Cash Preferred</div>
+          <div class="phone-card-reward">6% cashback on groceries</div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-card-label">Also in wallet</div>
+          <div class="phone-card-name">Chase Sapphire Reserve</div>
+          <div class="phone-card-reward">1% cashback here</div>
+        </div>
+
+        <div class="phone-savings">
+          <div class="phone-savings-label">Saved this month</div>
+          <div class="phone-savings-num">$38.40</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-notif">
+      <div class="phone-notif-top"><span class="phone-notif-dot"></span>TapSmart</div>
+      <div class="phone-notif-msg">Use Amex Blue Cash Preferred for 6% back here</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<div class="traction">
+  <div class="traction-item">
+    <div class="traction-num">$5K</div>
+    <div class="traction-label">Grant won at WVC Business Pitch Competition</div>
+  </div>
+  <div class="traction-item">
+    <div class="traction-num">Pre-seed</div>
+    <div class="traction-label">Actively fundraising · Pitching Kapor Capital & others</div>
+  </div>
+  <div class="traction-item">
+    <div class="traction-num">YC</div>
+    <div class="traction-label">Joining YC Startup School · Built end-to-end in SwiftUI</div>
+  </div>
+</div>
+
+<!-- DEMO VIDEO -->
+<section class="video-section" id="demo">
+  <p class="section-label">See it in action</p>
+  <h2 class="section-title">From geofence trigger to card recommendation in seconds.</h2>
+
+  <div class="video-container">
+    <!--
+      SWAP INSTRUCTIONS:
+      Replace this placeholder with a YouTube embed:
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+      
+      Or a Loom embed:
+      <iframe src="https://www.loom.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+    -->
+    <div class="video-placeholder">
+      <div class="video-play">▶</div>
+      <p>Demo video — add your YouTube or Loom link here</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="how-inner">
+    <p class="section-label" style="color: rgba(255,255,255,0.4);">How it works</p>
+    <h2 class="section-title" style="color: #fff; max-width: 400px;">Geofencing meets behavioral finance.</h2>
+
+    <div class="how-grid">
+      <div>
+        <div class="how-step-num">01</div>
+        <div class="how-step-title">Detect your location</div>
+        <div class="how-step-desc">CoreLocation geofences trigger silently when you arrive at a store — no manual input, no battery drain.</div>
+      </div>
+      <div>
+        <div class="how-step-num">02</div>
+        <div class="how-step-title">Rank your cards</div>
+        <div class="how-step-desc">TapSmart's recommendation engine scores every card in your wallet against the merchant category and finds your best return.</div>
+      </div>
+      <div>
+        <div class="how-step-num">03</div>
+        <div class="how-step-title">Notify before you tap</div>
+        <div class="how-step-desc">A lock screen notification fires instantly so you know which card to pull up in Apple Pay before you're at the register.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div>
+    <p class="section-label">About</p>
+    <h2 class="section-title">Builder, researcher, founder.</h2>
+    <div class="about-body">
+      <p>I'm Prisha Bhanushali, a student at West Valley College (dual-enrolled at Westmont High School) and a SMASH UC Berkeley Scholar with two years of independent ML research in agricultural computer vision.</p>
+      <p>I started TapSmart because I kept leaving cashback on the table — not from laziness, but because knowing the optimal card in the moment is genuinely hard. I built the entire iOS app from scratch: CoreLocation geofencing, SwiftUI, UserNotifications, and Apple Pay integration via PassKit.</p>
+      <p>I've deferred my Chancellor's Scholarship at UMass Amherst to focus on TapSmart full-time.</p>
+    </div>
+  </div>
+
+  <div class="about-creds">
+    <div class="cred-item">
+      <div class="cred-icon">$</div>
+      <div>
+        <div class="cred-main">$5,000 Grant — WVC Pitch Competition</div>
+        <div class="cred-sub">First place, West Valley College E-Center</div>
+      </div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">R</div>
+      <div>
+        <div class="cred-main">TECBio REU — University of Pittsburgh</div>
+        <div class="cred-sub">1 of 10 selected nationally · Industry placement at PredXBio</div>
+      </div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">N</div>
+      <div>
+        <div class="cred-main">NASA NCAS — Top 3 overall</div>
+        <div class="cred-sub">Finance lead · Rover design competition</div>
+      </div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">A</div>
+      <div>
+        <div class="cred-main">NCWIT Aspirations in Computing</div>
+        <div class="cred-sub">National Honorable Mention · SF Bay Area Affiliate Winner</div>
+      </div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon">JS</div>
+      <div>
+        <div class="cred-main">Jane Street AMP</div>
+        <div class="cred-sub">Advanced to HackerRank assessment stage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Prisha Bhanushali</span>
+  <span><a href="https://github.com/prishab0/TapSmart" target="_blank" style="color: inherit;">github.com/prishab0/TapSmart</a></span>
+</footer>
+
+</body>
+</html>
